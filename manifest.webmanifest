@@ -1,0 +1,19 @@
+{
+  "name": "Piègeforge",
+  "short_name": "Piègeforge",
+  "description": "Construis le donjon : des vagues de héros tentent d'atteindre ton Cœur de cristal.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["fullscreen", "standalone", "minimal-ui"],
+  "orientation": "landscape",
+  "background_color": "#07060f",
+  "theme_color": "#0b0714",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-mask.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
