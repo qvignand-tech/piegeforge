@@ -1,5 +1,5 @@
 // Piègeforge - service worker : jeu jouable hors ligne, mise à jour automatique
-const V = 'pf-20261116-2107';
+const V = 'pf-20261116-2138';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-mask.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
