@@ -2226,7 +2226,7 @@ function update(dt){
       const c=Math.floor(p.x/T),r=Math.floor(p.y/T);if(solid(c,r)&&S.tmap[key(c,r)]!==tr){p.life=0;burst(p.x,p.y,'#ccc',3,80)}}
     S.proj=S.proj.filter(p=>p.life>0);S.hproj=S.hproj.filter(p=>p.life>0);S.heroes=S.heroes.filter(h=>!h.dead);
     S.waveT=(S.waveT||0)+dt;if(!S.queue.length){S.emptyT=(S.emptyT||0)+dt;if(S.emptyT>110){for(const h of S.heroes)poof(h);S.heroes=[]}}
-    if(!S.queue.length&&!S.heroes.length&&S.phase==='wave'){if(S.lastKill&&!S.mode&&CAMON&&S.time-S.lastKill.t<1.2){S.slowmo=Math.max(S.slowmo||0,.45);S.focus={x:S.lastKill.x,y:S.lastKill.y,t:0}}endWave()}
+    if(!S.queue.length&&!S.heroes.length&&S.phase==='wave') endWave();
   } else { for(const tr of S.traps){if(tr.type==='saw')tr.ang+=dt*3;if(tr.type==='axe')tr.t+=dt*.5;if(tr.type==='fan'){tr.on=false;tr.ang+=dt*2}if(tr.type==='flame'){tr.on=false;tr.warm=0}} }
   for(const p of S.parts){p.vy+=p.g*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.985;p.life-=dt}
   S.parts=S.parts.filter(p=>p.life>0);if(S.parts.length>900)S.parts.splice(0,S.parts.length-900);
@@ -2800,7 +2800,7 @@ function drawCine(t){const C=S.cine,c=C.cur,bh=(24+34*C.beat)*C.bars;
   ctx.save();ctx.translate(c.x,c.y);const sc=c.k>0?.88:1;ctx.scale(sc,sc);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,21);ctx.lineTo(5.4,16.4);ctx.lineTo(9,24.6);ctx.lineTo(12.6,23);ctx.lineTo(9,15);ctx.lineTo(15.6,15);ctx.closePath();ctx.lineJoin='round';ctx.lineWidth=3.4;ctx.strokeStyle='#0b0714';ctx.stroke();ctx.fillStyle='#fff';ctx.fill();ctx.restore();
   ctx.save();ctx.setTransform(SS,0,0,SS,0,0);if(C.beat>.02){const g=ctx.createRadialGradient(W/2,H/2,H*.25,W/2,H/2,H*.8);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,`rgba(0,0,0,${.6*C.beat})`);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
   ctx.fillStyle='#04020a';ctx.fillRect(0,0,W,bh);ctx.fillRect(0,H-bh,W,bh);if(C.end>0){ctx.fillStyle=`rgba(4,2,10,${C.end})`;ctx.fillRect(0,0,W,H)}ctx.restore()}
-const BUILD='20261116-1749';let swReg=null,instEv=null,upReady=false;
+const BUILD='20261116-1822';let swReg=null,instEv=null,upReady=false;
 const standalone=()=>matchMedia('(display-mode: standalone)').matches||matchMedia('(display-mode: fullscreen)').matches||navigator.standalone===true;
 const iOS=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;
 function appToast(txt,btn,fn){let t=document.getElementById('upT');if(t)t.remove();t=document.createElement('div');t.id='upT';t.innerHTML='<span>'+txt+'</span>'+(btn?'<button>'+btn+'</button>':'');document.body.appendChild(t);requestAnimationFrame(()=>t.classList.add('in'));
